@@ -1,0 +1,200 @@
+// Valores base
+
+@font-face {
+  font-family: raleway;
+  src: url("./fonts/Raleway/static/Raleway-Regular.ttf");
+}
+
+$font-size-root: 14px;
+$aire: 4px;
+$header-toolbar-height: 32px;
+$header-page-tigle-height: 32px;
+$footer-height: 32px;
+$img-width: 100px;
+$card-border-radius: 4px;
+
+$header-background-color: rgb(186, 221, 59);
+$toolbar-background-color: white;
+$menu-li-background-color: lightgoldenrodyellow;
+$main-background-color: lightgray;
+$card-background-color: white;
+$footer-background-color: lightgoldenrodyellow;
+
+// Para resoluciones mayores a 768 px de ancho se plantea como un Grid
+
+* {
+  box-sizing: border-box;
+  font-family: raleway, Arial, Helvetica, sans-serif;
+  font-size: $font-size-root;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: calc($header-toolbar-height + $header-page-tigle-height) auto $footer-height;
+}
+
+header {
+  background-color: $header-background-color;
+  grid-area: 1 / 1 / 2 / -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  div.toolbar {
+    background-color: $toolbar-background-color;
+    display: flex;
+    justify-content: space-between;
+    padding: $aire;
+
+    div {
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+  }
+
+  div.page-title {
+    padding: 0px $aire * 2 $aire * 2 $aire * 2;
+    color: darken($header-background-color, 30%);
+    font-weight: bold;
+  }
+}
+
+nav {
+  background-color: darken($header-background-color, 50%);
+  grid-area: 2 / 1 / 3 / 2;
+  position: sticky;
+
+  .menu-title {
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: $aire;
+  }
+
+  ul {
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+
+    & > li {
+      background-color: $menu-li-background-color;
+      border: 1px solid lightgray;
+      padding: $aire;
+      font-size: calc($font-size-root * 0.8);
+    }
+  }
+}
+
+main {
+  background-color: $main-background-color;
+  grid-area: 2 / 2 / 3 / -1;
+  overflow: auto;
+  padding: $aire * 4 0px;
+
+  div.list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    gap: 5px 3px;
+
+    div.card {
+      width: 200px;
+      background-color: $card-background-color;
+      border-radius: $card-border-radius;
+      border: 1px solid black;
+      padding: $aire * 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+
+      img {
+        width: $img-width;
+        height: $img-width;
+        border-radius: calc($img-width / 2);
+      }
+
+      div.member-name {
+        padding-top: $aire * 2;
+        text-align: center;
+      }
+    }
+  }
+}
+
+footer {
+  background-color: $footer-background-color;
+  grid-area: 3 / 1 / -1 / -1;
+  padding: 0px $aire;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+// Para resoluciones inferiores a 768px se plantea como un Flexbox
+
+@media screen and (width <= 768px) {
+  body {
+    height: 100%;
+    display: flex;
+    flex-flow: column wrap;
+  }
+
+  header {
+    div {
+      &.toolbar {
+        display: none;
+      }
+
+      &.page-title {
+        padding: calc(2 * $aire);
+      }
+    }
+  }
+
+  nav {
+    top: 0px;
+    position: sticky;
+
+    .menu-title {
+      display: none;
+    }
+
+    ul {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-evenly;
+      list-style-type: none;
+
+      & > li {
+        width: 20%;
+        text-align: center;
+        margin: $aire;
+      }
+    }
+  }
+
+  main {
+    div.list {
+      display: flex;
+      flex-direction: column;
+
+      div.card {
+        border: none;
+        width: 100%;
+        border-radius: 0px;
+      }
+    }
+  }
+
+  footer {
+    height: $footer-height;
+    padding: $aire;
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mfe_mod01-extra",
+  "version": "1.0.0",
+  "description": "Ejercicio Extra Módulo 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rrll74/MFE_Mod01-Extra.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rrll74/MFE_Mod01-Extra/issues"
+  },
+  "homepage": "https://github.com/rrll74/MFE_Mod01-Extra#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.10.1"
+  }
+}
